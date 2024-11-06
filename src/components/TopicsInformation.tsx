@@ -16,13 +16,13 @@ export default function TopicsInformation() {
                     image={selectionImage}
                     heading="Selection Sort"
                     text="Selection Sort stands as a methodical sorting algorithm, meticulously selecting and positioning elements into their rightful places within a list. Its core principle involves repeatedly scanning the unsorted portion of the list to identify the smallest (or largest, depending on the desired order) element and swapping it with the first element in that unsorted segment. This process continues iteratively, gradually establishing order from the beginning of the list until all elements are sorted. While not the most efficient algorithm in all cases, Selection Sort stands out for its simplicity and in-place nature, requiring minimal extra memory during execution. These qualities make it a suitable choice for scenarios where memory is a constraint, or when a basic, intuitive sorting approach is preferred."
-                    route={"/selection-sort"}
+                    route={"/topics/SelectionSort"}
                 />
                 <TopicData
                     image={bubbleImage}
                     heading="Bubble Sort"
                     text="Bubble Sort, a fundamental sorting algorithm, takes a methodical approach to arranging data in ascending or descending order. It operates by repeatedly iterating through a list, comparing adjacent elements, and swapping them if they are in the wrong order. This process continues until no further swaps are necessary, ensuring the elements are ultimately sorted. While relatively simple to grasp, Bubble Sort often faces efficiency challenges, especially when handling large datasets. However, its intuitive nature makes it a valuable tool for understanding core sorting concepts and fostering a foundation for exploring more complex algorithms."
-                    route={"/bubble-sort"}
+                    route={"/topics/BubbleSort"}
                 />
                 <TopicData
                     image={mergeImage}
