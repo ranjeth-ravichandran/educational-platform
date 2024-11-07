@@ -368,3 +368,352 @@ footer {
   font-size: 1.5rem;
   padding: 0.9rem 0 0.2rem 0;
 }
+
+/* ----------------------------------------------------- */
+/* Bubble Sort*/
+/* Bubblesort  */
+
+.bubblesort-information {
+  padding: 20px;
+
+  h1 {
+    margin: 20px 0;
+  }
+
+  p,
+  li {
+    font-size: 1.3rem;
+  }
+
+  .code {
+    background-color: black;
+    color: yellow;
+    border-radius: 8px;
+    padding: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+}
+
+/* Card */
+
+.cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.flip {
+  position: relative;
+  width: 350px;
+  height: 220px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+.flip .front,
+.flip .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background: #313131;
+  backface-visibility: hidden;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.5s;
+}
+
+.flip .front {
+  transform: rotateY(0deg);
+}
+
+.flip .back {
+  word-wrap: break-word;
+  transform: rotateY(-180deg);
+  opacity: 0;
+}
+
+.flip:hover .front {
+  transform: rotateY(180deg);
+}
+
+.flip:hover .back {
+  transform: rotateY(0deg);
+  opacity: 1;
+}
+
+/* ----------------------------------------------------- */
+/* Quiz*/
+
+.quiz-group-container {
+  max-width: 1400px;
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-container {
+  width: 450px;
+  height: 550px;
+
+  margin-top: 20px;
+  margin-bottom: 50px;
+  background: white;
+  color: #262626;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 10px;
+  padding: 40px 50px;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+
+  .active-question-no {
+    font-size: 32px;
+    font-weight: 500;
+    color: #acc2ef;
+  }
+
+  .total-question {
+    font-size: 24px;
+    font-weight: 500;
+    color: #3d5a80;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  ul {
+    margin-top: 20px;
+
+    li {
+      text-decoration: none;
+      list-style: none;
+      color: #1d1c1c;
+      font-size: 18px;
+      font-weight: 500;
+      border: 3px solid#71c4ef;
+      border-radius: 16px;
+      padding: 11px;
+      margin-bottom: 15px;
+      cursor: pointer;
+    }
+
+    .selected-answer {
+      background: #313d44;
+      border: 1px solid #cccbc8;
+      color: white;
+      box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+    }
+  }
+
+  button {
+    display: block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: fit-content;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+
+    &:disabled {
+      background: #cccbc8;
+      color: #abacad;
+      cursor: not-allowed;
+    }
+  }
+
+  input {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    box-sizing: border-box;
+    font-size: 2rem;
+  }
+
+  .result {
+    text-align: center;
+
+    h3 {
+      font-size: 24px;
+      letter-spacing: 1.4px;
+      text-align: center;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 500;
+      margin: 20px auto;
+
+      span {
+        color: #acc2ef;
+        font-size: 22px;
+      }
+    }
+  }
+}
+
+
+/* ----------------------------------------------------- */
+/* Visualizer */
+
+.sorting {
+  max-width: 1200px;
+  width: inherit;
+  height: fit-content;
+
+  background-color: rgb(255, 255, 255);
+  color: #000000;
+  border-radius: 18px;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+
+  .navbar {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.233);
+
+    margin-bottom: 10px;
+
+    .sliderContainer {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+
+      label {
+        font-size: 18px;
+        color: black;
+        font-weight: bold;
+      }
+
+      .slider {
+        width: 100%;
+      }
+
+      * {
+        width: 50%;
+      }
+
+      .size,
+      .speed {
+        padding: 20px;
+      }
+
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+
+      button {
+        padding: 20px;
+        font-size: 1rem;
+        color: #000000;
+        background-color: #d5ea5f;
+        border-radius: 20px;
+        border: none;
+        font-weight: bold;
+        transition: all 0.2s;
+
+        &:hover {
+          cursor: pointer;
+          background-color: #788650;
+        }
+      }
+
+      .generate {
+        background-color: rgb(252, 191, 134);
+
+        &:hover {
+          background-color: #1b9aa8c6;
+        }
+      }
+    }
+
+    @media screen and (max-width: 500px) {
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  }
+
+  .heading {
+    color: #000;
+    font-weight: 900;
+    font-size: 2rem;
+  }
+
+  .main {
+    width: 100%;
+    height: 550px;
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    align-items: last baseline;
+    justify-content: center;
+
+    .arrayBar {
+      background-color: gray;
+      border-radius: 4px 4px 0 0;
+    }
+  }
+
+  .arrayBar {
+    transition: all 70ms ease-out;
+  }
+}
+
+/* ----------------------------------------------------- */
+/* Chatbot */
+
+.chatbot-container {
+  position: relative;
+
+  width: 800px;
+  height: 700px;
+  margin: 20px 0;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+
+  .cs-main-container {
+    border-radius: 20px !important;
+    font-size: 1.2rem;
+  }
+
+  .cs-message-list__scroll-wrapper {
+    padding-top: 20px;
+  }
+
+  .cs-button--attachment {
+    display: none;
+  }
+
+  .cs-message-input__content-editor-wrapper {
+    margin-left: 20px;
+  }
+
+  .cs-message__content {
+    background-color: rgb(159, 249, 159);
+    text-align: start;
+  }
+}
