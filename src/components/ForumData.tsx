@@ -2,6 +2,7 @@
 import React from 'react';
 import { formatISO9075 } from 'date-fns';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface ForumDataProps {
     _id: string;
@@ -17,7 +18,7 @@ const ForumData: React.FC<ForumDataProps> = ({ _id, title, summary, cover, creat
     return (
         <Link href={`/post/${_id}`}>
             <div className={"post"}>
-                <img src={cover} alt="cover image" />
+                <Image src={cover} alt="cover image" />
                 <div className={"texts"}>
                     <h2>{title}</h2>
                     <p className={"info"}>

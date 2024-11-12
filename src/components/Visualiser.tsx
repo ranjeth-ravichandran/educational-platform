@@ -1,6 +1,6 @@
 // /pages/Visualizer.js
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 
 /* import { getQuickSortAnimations } from "../algorithms/QuickSort"; */
 import { getBubbleSortAnimations } from "@/algorithms/BubblesortAlgo";
@@ -19,6 +19,7 @@ interface VisualiserProps {
     sorting_text: string;
 }
 
+
 const Visualiser = ({ sorting_method, sorting_text }: VisualiserProps) => {
     const [arraySize, setArraySize] = useState<number>(DEFAULT_ARRAY_SIZE);
     const [animationSpeed, setAnimationSpeed] = useState<number>(DEFAULT_ANIMATION_SPEED);
@@ -29,18 +30,18 @@ const Visualiser = ({ sorting_method, sorting_text }: VisualiserProps) => {
     // Duplicate the array to avoid state mutation
     const duplicateArray = array.slice();
 
-    useEffect(() => {
-        generateNewArray();
-    }, [arraySize]);
-
-    const generateNewArray = () => {
+    const generateNewArray = useCallback(() => {
         const newArray = [];
         for (let i = 0; i < arraySize; i++) {
             newArray.push(randomIntFromInterval(ARRAY_MIN_VALUE, ARRAY_MAX_VALUE));
         }
         resetBarColors();
         setArray(newArray);
-    };
+    }, [arraySize]);
+
+    useEffect(() => {
+        generateNewArray();
+    }, [arraySize, generateNewArray]);
 
     const resetArray = () => {
         generateNewArray();

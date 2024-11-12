@@ -3,7 +3,7 @@ export default function AboutInfo() {
         <div className="about-container">
             <h1>Website Aim</h1>
             <p>
-                Delve into the heart of computer science with "Educational Website",
+                Delve into the heart of computer science with &quot;Educational Website&quot;,
                 your portal to mastering data structures and algorithms. Built for
                 university students like you, this platform unlocks the captivating
                 world of efficient computation.
@@ -17,7 +17,7 @@ export default function AboutInfo() {
             </p>
             <p>
                 Join a vibrant community of fellow learners, conquer algorithmic
-                puzzles, and refine your problem-solving prowess. "Educational Website"
+                puzzles, and refine your problem-solving prowess. &quot;Educational Website&quot;
                 is your launchpad to success in the field of computer science, equipping
                 you with the knowledge and skills to shape the future of technology.
             </p>

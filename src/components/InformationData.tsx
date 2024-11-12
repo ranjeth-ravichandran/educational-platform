@@ -1,3 +1,4 @@
+import Image from "next/image";
 
 
 interface InformationDataProps {
@@ -17,8 +18,8 @@ export default function InformationData({ className, heading, text, img1, img2 }
                 <p>{text}</p>
             </div>
             <div className="image">
-                <img alt="img" src={img1} />
-                <img alt="img" src={img2} />
+                <Image alt="img" src={img1} />
+                <Image alt="img" src={img2} />
             </div>
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+
 import { MenuItems } from "./MenuItems";
 import Link from "next/link";
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 
 interface TopicProps {
@@ -17,7 +18,7 @@ export default function TopicData({ image, heading, text, route }: TopicProps) {
     return (
         <div className="t-card" onClick={navigateToTopic}>
             <div className="t-image">
-                <img src={image} alt="Topic Image" />
+                <Image src={image} alt="Topic Image" />
             </div>
             <h4>{heading}</h4>
             <p>{text}</p>
