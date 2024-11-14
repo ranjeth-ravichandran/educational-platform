@@ -1,45 +1,52 @@
-import multer from 'multer';
-import nc from 'next-connect';
-import path from 'path';
-import Post from '../../models/Post'; // Import your Post model
+// pages/api/upload.ts
+import { IncomingForm } from 'formidable';
+/* import fs from 'fs';
+import path from 'path'; */
 import connectMongo from '../../lib/connectMongo';
+import Post from '../../models/Post';
 
-// Set up Multer storage
-const storage = multer.diskStorage({
-    destination: './public/uploads', // Save images in the public/uploads folder
-    filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9);
-        cb(null, uniqueSuffix + path.extname(file.originalname)); // Unique filename
-    },
-});
-const upload = multer({ storage });
-
-// Handler setup with next-connect
-const handler = nc()
-    .use(upload.single('file')) // Handle file upload
-    .post(async (req, res) => {
-        await connectMongo(); // Ensure MongoDB connection
-
-        // Get data from request and create a new post
-        const { title, summary, content, author } = req.body;
-        const cover = `/uploads/${req.file.filename}`; // Path to the uploaded image
-
-        const newPost = await Post.create({
-            title,
-            summary,
-            content,
-            cover, // Save the file path in the post document
-            author,
-        });
-
-        res.status(201).json(newPost);
-    });
-
-export default handler;
-
-// Disable Next.js's default body parser to allow Multer to handle file uploads
+// Disable default body parser to allow Formidable to handle the request
 export const config = {
     api: {
-        bodyParser: false, // Disable the body parser for this route
+        bodyParser: false,
     },
 };
+
+const handler = async (req: any, res: any) => {
+    const form = new IncomingForm({
+        keepExtensions: true, // Keep file extensions
+        uploadDir: './public/uploads', // Directory where the uploaded file will be saved
+    });
+
+    form.parse(req, async (err: any, fields: any, files: any) => {
+        if (err) {
+            res.status(500).json({ error: 'Error parsing the form data' });
+            return;
+        }
+
+        try {
+            await connectMongo(); // Ensure MongoDB connection
+
+            const { title, summary, content, author } = fields;
+            const file = files.file[0]; // Assuming you are sending a single file with the name 'file'
+
+            // Move the file to the 'public/uploads' directory
+            const coverPath = `/uploads/${file.newFilename}`;
+
+            // Save the post in the database
+            const newPost = await Post.create({
+                title,
+                summary,
+                content,
+                cover: coverPath, // Save file path in the database
+                author,
+            });
+
+            res.status(201).json(newPost);
+        } catch (error) {
+            res.status(500).json({ error: 'Error saving post to database' });
+        }
+    });
+};
+
+export default handler;
