@@ -4,8 +4,21 @@ import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
 import ForumData from '../components/ForumData';
 
+// Define the Post type
+interface Post {
+    _id: string; // _id as string (assuming it's a MongoDB ObjectId)
+    title: string;
+    summary: string;
+    content: string;
+    cover: string;
+    author: string;
+    createdAt: string;
+    updatedAt: string;
+    __v: number;
+}
+
 const Forum = () => {
-    const [posts, setPosts] = useState([]);
+    const [posts, setPosts] = useState<Post[]>([]);
 
     useEffect(() => {
         // Use Next.js API routes
