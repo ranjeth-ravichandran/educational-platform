@@ -2,8 +2,7 @@ import clientPromise from '@/lib/mongodb';
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
 
         const client = await clientPromise;
@@ -29,5 +28,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         console.error(e);
 
     }
-
 }
