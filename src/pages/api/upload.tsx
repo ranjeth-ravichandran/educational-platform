@@ -18,12 +18,7 @@ const handler = async (req: IncomingMessage, res: NextApiResponse) => {
         uploadDir: './public/uploads', // Directory where the uploaded file will be saved
     });
 
-    form.parse(req, async (err: Error | null, fields: Fields, files: Files) => {
-        if (err) {
-            res.status(500).json({ error: 'Error parsing the form data' });
-            return;
-        }
-
+    form.parse(req, async (_, fields: Fields, files: Files) => {
         try {
             // Connect to MongoDB
             await connectMongo();
