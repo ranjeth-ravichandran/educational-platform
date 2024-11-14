@@ -1,35 +1,36 @@
-// components/ForumData.tsx
 import React from 'react';
 import { formatISO9075 } from 'date-fns';
 import Link from 'next/link';
 import Image from 'next/image';
 
-interface Author {
-    username: string;
-}
-
-interface ForumDataProps {
+export interface Post {
     _id: string;
     title: string;
     summary: string;
     content: string;
     cover: string;
-    author: Author;
-    createdAt: string;
-    updatedAt: string;
-    __v: number;
+    author: { username: string }; // Simplify for demonstration
+    createdAt: Date;
 }
 
-const ForumData: React.FC<ForumDataProps> = ({ _id, title, summary, cover, updatedAt, author }) => {
+interface ForumDataProps {
+    post: Post;
+}
+
+const ForumData: React.FC<ForumDataProps> = ({ post }) => {
+    const { _id, title, summary, cover, author, createdAt } = post;
+
     return (
-        <Link href={`/post/${_id}`}>
+        <Link href={`/${_id}`}>
             <div className="post">
-                <Image src={cover} alt="cover image" width={300} height={200} />
+                <Image src={cover} alt="img" width={100} height={100} />
                 <div className="texts">
                     <h2>{title}</h2>
                     <p className="info">
-                        <span className="author">{author?.username}</span>
-                        <time>{formatISO9075(new Date(updatedAt))}</time>
+                        <span ref="/" className="author">
+                            {author.username}
+                        </span>
+                        <time>{formatISO9075(new Date(createdAt))}</time>
                     </p>
                     <p className="summary">{summary}</p>
                 </div>
