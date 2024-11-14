@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Image from 'next/image';
 
 const FileUploadForm = () => {
     const [file, setFile] = useState<File | null>(null);
@@ -86,7 +87,7 @@ const FileUploadForm = () => {
                         <strong>Content:</strong>
                         <div dangerouslySetInnerHTML={{ __html: post.content }} />
                     </div>
-                    {post.cover && <img src={post.cover} alt="Post Cover" />}
+                    {post.cover && <Image src={post.cover} width={300} height={300} alt="Post Cover" />}
                 </div>
             )}
         </div>
