@@ -1,7 +1,7 @@
 // pages/api/posts.js
 import connectMongo from '../../lib/connectMongo';
 import Post from '../../models/Post';
-import User from '../../models/User'; // Import the User model to register it
+/* import User from '../../models/User'; // Import the User model to register it */
 
 export default async function handler(req, res) {
     try {

@@ -1,4 +1,5 @@
-// /pages/Visualizer.js
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 
 import React, { useState, useRef, useEffect, useCallback } from "react";
 
