@@ -18,8 +18,8 @@ export default function InformationData({ className, heading, text, img1, img2 }
                 <p>{text}</p>
             </div>
             <div className="image">
-                <Image alt="img" src={img1} />
-                <Image alt="img" src={img2} />
+                <Image alt="img" src={img1} width={300} height={300} />
+                <Image alt="img" src={img2} width={300} height={300} />
             </div>
         </div>
     );

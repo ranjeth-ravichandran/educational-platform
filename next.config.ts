@@ -1,16 +1,13 @@
 import type { NextConfig } from "next";
 
-/* Conditional statement so build can work in production and locally. */
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   basePath: isProd ? '/educational-platform' : '',
   assetPrefix: '/educational-platform',
   publicRuntimeConfig: {
     basePath: '/educational-platform',
   },
-  output: 'export',
   images: {
     remotePatterns: [
       {
@@ -20,9 +17,7 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  api: {
-    bodyParser: false,  // Disable Next.js body parser for file uploads
-  },
+  reactStrictMode: true,
 };
 
 export default nextConfig;

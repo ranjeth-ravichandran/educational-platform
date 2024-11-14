@@ -1,4 +1,3 @@
-// pages/api/upload.js
 import multer from 'multer';
 import nc from 'next-connect';
 import path from 'path';
@@ -17,7 +16,7 @@ const upload = multer({ storage });
 
 // Handler setup with next-connect
 const handler = nc()
-    .use(upload.single('file'))
+    .use(upload.single('file')) // Handle file upload
     .post(async (req, res) => {
         await connectMongo(); // Ensure MongoDB connection
 
@@ -41,6 +40,6 @@ export default handler;
 // Disable Next.js's default body parser to allow Multer to handle file uploads
 export const config = {
     api: {
-        bodyParser: false,
+        bodyParser: false, // Disable the body parser for this route
     },
 };
