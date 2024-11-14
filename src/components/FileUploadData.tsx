@@ -1,13 +1,21 @@
 import { useState } from 'react';
 import Image from 'next/image';
 
+// Interface for the post data
+interface Post {
+    title: string;
+    summary: string;
+    content: string;
+    cover: string; // This will be the path to the uploaded image
+}
+
 const FileUploadForm = () => {
     const [file, setFile] = useState<File | null>(null);
     const [title, setTitle] = useState('');
     const [summary, setSummary] = useState('');
     const [content, setContent] = useState('');
     const [loading, setLoading] = useState(false);
-    const [post, setPost] = useState<any | null>(null); // State to store the uploaded post
+    const [post, setPost] = useState<Post | null>(null); // State to store the uploaded post
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
