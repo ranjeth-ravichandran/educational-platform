@@ -1,16 +1,20 @@
-// components/ForumData.js
+// components/ForumData.tsx
 import React from 'react';
 import { formatISO9075 } from 'date-fns';
 import Link from 'next/link';
 import Image from 'next/image';
 
+interface Author {
+    username: string;
+}
+
 interface ForumDataProps {
-    _id: string; // _id as string (assuming it's a MongoDB ObjectId)
+    _id: string;
     title: string;
     summary: string;
     content: string;
     cover: string;
-    author: string;
+    author: Author;
     createdAt: string;
     updatedAt: string;
     __v: number;
@@ -19,15 +23,15 @@ interface ForumDataProps {
 const ForumData: React.FC<ForumDataProps> = ({ _id, title, summary, cover, updatedAt, author }) => {
     return (
         <Link href={`/post/${_id}`}>
-            <div className={"post"}>
-                <Image src={cover} alt="cover image" />
-                <div className={"texts"}>
+            <div className="post">
+                <Image src={cover} alt="cover image" width={300} height={200} />
+                <div className="texts">
                     <h2>{title}</h2>
-                    <p className={"info"}>
-                        <span className={"author"}>{author}</span>
+                    <p className="info">
+                        <span className="author">{author?.username}</span>
                         <time>{formatISO9075(new Date(updatedAt))}</time>
                     </p>
-                    <p className={"summary"}>{summary}</p>
+                    <p className="summary">{summary}</p>
                 </div>
             </div>
         </Link>
