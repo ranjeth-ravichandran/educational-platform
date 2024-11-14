@@ -1,5 +1,6 @@
 import clientPromise from "../lib/mongodb";
 import { GetServerSideProps } from 'next';
+import Hero from "@/components/Hero";
 
 
 interface Movie {
@@ -17,11 +18,12 @@ interface MoviesProps {
 
 const Movies: React.FC<MoviesProps> = ({ movies }) => {
     return (
-        <div>
-            <h1>Top 20 Movies of All Time</h1>
-            <p>
-                <small>(According to Metacritic)</small>
-            </p>
+        <>
+            <Hero
+                cName="hero"
+                heroImg="https://images.unsplash.com/photo-1517897286832-ba927d20e824?q=80&w=2673&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                title="Top 20 Movies of All Time"
+                buttonClass="hide" text={""} url={""} buttonText={""} />
             <ul>
                 {movies.map((movie) => (
                     <li key={movie._id}>
@@ -31,7 +33,7 @@ const Movies: React.FC<MoviesProps> = ({ movies }) => {
                     </li>
                 ))}
             </ul>
-        </div>
+        </>
     );
 };
 
