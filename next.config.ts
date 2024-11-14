@@ -20,6 +20,9 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  api: {
+    bodyParser: false,  // Disable Next.js body parser for file uploads
+  },
 };
 
 export default nextConfig;
