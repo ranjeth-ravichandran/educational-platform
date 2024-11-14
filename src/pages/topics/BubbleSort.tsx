@@ -38,7 +38,7 @@ const Bubblesort_Information = () => {
                     element is bigger than the second), they are swapped.
                 </li>
                 <li>
-                    <b>Bubbling Up:</b> This swapping essentially "bubbles" the larger
+                    <b>Bubbling Up:</b> This swapping essentially &quot;bubbles&quot; the larger
                     element towards the end of the list.
                 </li>
                 <li>
