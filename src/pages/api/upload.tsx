@@ -19,35 +19,31 @@ const handler = async (req: IncomingMessage, res: NextApiResponse) => {
     });
 
     form.parse(req, async (_, fields: Fields, files: Files) => {
-        try {
-            // Connect to MongoDB
-            await connectMongo();
+        // Connect to MongoDB
+        await connectMongo();
 
-            // Destructure fields and files
-            const { title, summary, content, author } = fields;
-            const file = files.file ? files.file[0] : null; // Assuming you are sending a single file with the name 'file'
+        // Destructure fields and files
+        const { title, summary, content, author } = fields;
+        const file = files.file ? files.file[0] : null; // Assuming you are sending a single file with the name 'file'
 
-            if (!file) {
-                res.status(400).json({ error: 'No file uploaded' });
-                return;
-            }
-
-            // Construct the file path
-            const coverPath = `/uploads/${file.newFilename}`;
-
-            // Save the post in the database
-            const newPost = await Post.create({
-                title,
-                summary,
-                content,
-                cover: coverPath, // Save file path in the database
-                author,
-            });
-
-            res.status(201).json(newPost);
-        } catch (error) {
-            res.status(500).json({ error: 'Error saving post to database' });
+        if (!file) {
+            res.status(400).json({ error: 'No file uploaded' });
+            return;
         }
+
+        // Construct the file path
+        const coverPath = `/uploads/${file.newFilename}`;
+
+        // Save the post in the database
+        const newPost = await Post.create({
+            title,
+            summary,
+            content,
+            cover: coverPath, // Save file path in the database
+            author,
+        });
+
+        res.status(201).json(newPost);
     });
 };
 

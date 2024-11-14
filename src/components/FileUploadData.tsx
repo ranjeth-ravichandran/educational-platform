@@ -6,31 +6,23 @@ const FileUploadForm = () => {
     const [summary, setSummary] = useState('');
     const [content, setContent] = useState('');
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState<string | null>(null); // New error state
+    const [post, setPost] = useState<any | null>(null); // State to store the uploaded post
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
-            const selectedFile = e.target.files[0];
-            if (selectedFile && selectedFile.size > 10 * 1024 * 1024) {
-                setError('File size should be less than 10MB');
-            } else {
-                setError(null);
-                setFile(selectedFile);
-            }
+            setFile(e.target.files[0]);
         }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        // Basic validation to ensure the form is filled out
-        if (!title || !summary || !content || !file) {
-            setError('Please fill in all fields and select a file.');
+        if (!file) {
+            alert('Please select a file to upload.');
             return;
         }
 
         setLoading(true);
-        setError(null);
 
         const formData = new FormData();
         formData.append('file', file);
@@ -45,62 +37,59 @@ const FileUploadForm = () => {
             });
 
             if (response.ok) {
-                const post = await response.json();
+                const uploadedPost = await response.json();
+                setPost(uploadedPost); // Store the uploaded post data
                 alert('Post uploaded successfully!');
-                // Optionally, reset the form after successful upload
-                setTitle('');
-                setSummary('');
-                setContent('');
-                setFile(null);
             } else {
-                const responseData = await response.json();
-                setError(responseData.error || 'Error uploading post');
+                alert('Error uploading post');
             }
         } catch (error) {
             console.error('Error uploading file:', error);
-            setError('Error uploading file');
+            alert('Error uploading file');
         }
 
         setLoading(false);
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
+        <div>
+            <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     placeholder="Title"
                 />
-            </div>
-            <div>
                 <input
                     type="text"
                     value={summary}
                     onChange={(e) => setSummary(e.target.value)}
                     placeholder="Summary"
                 />
-            </div>
-            <div>
                 <textarea
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                     placeholder="Content"
                 />
-            </div>
-            <div>
                 <input type="file" onChange={handleFileChange} />
-                {error && !file && <p style={{ color: 'red' }}>Please select a file</p>}
-                {error && file && <p style={{ color: 'red' }}>{error}</p>}
-            </div>
-            <div>
                 <button type="submit" disabled={loading}>
                     {loading ? 'Uploading...' : 'Upload Post'}
                 </button>
-            </div>
-            {error && !loading && <div style={{ color: 'red' }}>{error}</div>}
-        </form>
+            </form>
+
+            {/* Display the uploaded post after successful upload */}
+            {post && (
+                <div>
+                    <h2>{post.title}</h2>
+                    <p><strong>Summary:</strong> {post.summary}</p>
+                    <div>
+                        <strong>Content:</strong>
+                        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+                    </div>
+                    {post.cover && <img src={post.cover} alt="Post Cover" />}
+                </div>
+            )}
+        </div>
     );
 };
 
