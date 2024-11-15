@@ -82,11 +82,11 @@ footer {
 }
 
 .nav-menu {
-
   display: grid;
   grid-template-columns: repeat(8, auto);
   grid-gap: 10px;
   align-items: center;
+  transition: all 0.3s ease-in-out;
 }
 
 
@@ -107,6 +107,47 @@ footer {
   background-color: #1f6475;
   transition: all 0.5s ease-in-out;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.25);
+}
+
+.menu-icon {
+  margin-right: 20px;
+  display: none;
+  cursor: pointer;
+}
+
+/* Media Query for Burger Menu */
+@media screen and (max-width: 1300px) {
+  .menu-icon {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    /* Hide the horizontal menu by default */
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 200px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-menu.active {
+    display: flex;
+    /* Show the dropdown when the burger menu is clicked */
+  }
+
+  .nav-item {
+    padding: 0.5rem 0;
+  }
+
+  .nav-item a {
+    color: white;
+    text-decoration: none;
+  }
 }
 
 /* ----------------------------------------------------- */
@@ -321,6 +362,7 @@ footer {
 /* Topics */
 
 .topics {
+  max-width: inherit;
   margin: 1rem 2rem;
   color: #ededed;
 }
@@ -369,11 +411,26 @@ footer {
   padding: 0.9rem 0 0.2rem 0;
 }
 
+@media screen and (max-width: 1250px) {
+  .topic-card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .t-card {
+    width: 100%;
+    height: fit-content;
+  }
+}
+
 /* ----------------------------------------------------- */
 /* Bubble Sort*/
 /* Bubblesort  */
 
 .bubblesort-information {
+  max-width: inherit;
+  word-wrap: break-word;
+
   padding: 20px;
 
   h1 {

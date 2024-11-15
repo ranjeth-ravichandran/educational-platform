@@ -1,4 +1,4 @@
-import { AboutIcon, ContactIcon, ForumIcon, HomeIcon, RobotIcon, TopicsIcon } from "./SvgIcons";
+import { AboutIcon, ContactIcon, ForumIcon, HomeIcon, LoginIcon, RobotIcon, TopicsIcon } from "./SvgIcons";
 
 export const MenuItems = [
     {
@@ -36,5 +36,11 @@ export const MenuItems = [
         url: "/contact",
         cName: "nav-links",
         icon: ContactIcon,
+    },
+    {
+        title: "Login",
+        url: "/login",
+        cName: "nav-links",
+        icon: LoginIcon,
     },
 ];
