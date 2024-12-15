@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         const hashedPassword = bcrypt.hashSync(password, 10);
         const user = await User.create({ username, password: hashedPassword });
         res.status(201).json(user);
-    } catch (error) {
+    } catch {
         res.status(400).json({ error: "User already exists or invalid data" });
     }
 }

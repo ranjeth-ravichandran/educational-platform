@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         });
 
         res.status(201).json(post);
-    } catch (error) {
+    } catch {
         res.status(401).json({ error: "Unauthorized" });
     }
 }
