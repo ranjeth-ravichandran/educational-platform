@@ -1,4 +1,4 @@
-import { AboutIcon, ContactIcon, ForumIcon, HomeIcon, LoginIcon, RobotIcon, TopicsIcon } from "./SvgIcons";
+import { AboutIcon, ContactIcon, ForumIcon, HomeIcon, LoginIcon, LogoutIcon, ProfileIcon, RobotIcon, TopicsIcon } from "./SvgIcons";
 
 export const MenuItems = [
     {
@@ -14,8 +14,8 @@ export const MenuItems = [
         icon: AboutIcon,
     },
     {
-        title: "Forum",
-        url: "/forum",
+        title: "Blogs",
+        url: "/blogs",
         cName: "nav-links",
         icon: ForumIcon,
     },
@@ -43,4 +43,17 @@ export const MenuItems = [
         cName: "nav-links",
         icon: LoginIcon,
     },
+    {
+        title: "Logout",
+        url: "/",
+        cName: "nav-links",
+        icon: LogoutIcon,
+    },
+    {
+        title: "Profile",
+        url: "/profile",
+        cName: "nav-links",
+        icon: ProfileIcon,
+    },
+
 ];
