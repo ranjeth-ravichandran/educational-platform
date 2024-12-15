@@ -1,4 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next';
+/* eslint-disable no-use-before-define */
+//import { NextApiRequest, NextApiResponse } from 'next';
 import Post from '@/models/Post';
 import { connectToDatabase } from '@/lib/mongodb';
 import jwt from 'jsonwebtoken';

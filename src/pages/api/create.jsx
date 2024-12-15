@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 // pages/api/posts/create.js
 import Post from "@/models/Post";
 import { connectToDatabase } from "@/lib/mongodb";
@@ -21,7 +23,7 @@ export default async function handler(req, res) {
         });
 
         res.status(201).json(post);
-    } catch (err) {
+    } catch (error) {
         res.status(401).json({ error: "Unauthorized" });
     }
 }

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import TopicsInformation from "@/components/TopicsInformation";
 
 export default function Login() {
     const [username, setUsername] = useState("");

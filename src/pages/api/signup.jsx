@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 // pages/api/auth/signup.js
 import bcrypt from "bcryptjs";
 import User from "@/models/User";
@@ -11,7 +13,7 @@ export default async function handler(req, res) {
         const hashedPassword = bcrypt.hashSync(password, 10);
         const user = await User.create({ username, password: hashedPassword });
         res.status(201).json(user);
-    } catch (err) {
+    } catch (error) {
         res.status(400).json({ error: "User already exists or invalid data" });
     }
 }

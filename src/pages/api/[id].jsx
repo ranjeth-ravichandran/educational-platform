@@ -1,3 +1,5 @@
+/* eslint-disable no-use-before-define */
+
 import { connectToDatabase } from "@/lib/mongodb";
 import Post from "@/models/Post";
 
