@@ -198,6 +198,14 @@ footer {
 }
 
 @media screen and (max-width: 930px) {
+
+  .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   .hero-text h1 {
     padding: 10px 20px;
   }
@@ -211,6 +219,12 @@ footer {
     padding: 0.6rem 1.1rem;
     border-radius: 6px;
     font-size: 1rem;
+    width: fit-content;
+  }
+
+  
+  .about-container{
+    margin: 20px !important;
   }
 }
 
@@ -325,14 +339,20 @@ footer {
 /* Contacts */
 
 .form-container {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
+  gap: 20px;
 }
 
 .form-container form {
-  padding-top: 3rem;
+  width: inherit;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  width: 400px;
+  max-width: 400px;
 }
 
 .form-container input {
@@ -415,6 +435,15 @@ footer {
   padding: 0.9rem 0 0.2rem 0;
 }
 
+@media screen and (max-width: 930px) {
+  .t-card p{
+      max-height: 4.5em; /* Limit height to 3 lines of text (adjust as needed) */
+      overflow: hidden; /* Hide overflow content */
+      text-overflow: ellipsis; /* Add "..." for truncated text */
+      white-space: wrap; /* Prevent text wrapping */
+  }
+}
+
 @media screen and (max-width: 1250px) {
   .topic-card {
     flex-direction: column;
@@ -432,28 +461,32 @@ footer {
 /* Bubblesort  */
 
 .bubblesort-information {
-  max-width: inherit;
-  word-wrap: break-word;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+}
 
+.bubblesort-text {
+  width: inherit;
   padding: 20px;
+}
 
-  h1 {
-    margin: 20px 0;
-  }
+.bubblesort-text h1 {
+  margin: 20px 0;
+}
 
-  p,
-  li {
-    font-size: 1.3rem;
-  }
+.bubblesort-text p, .bubblesort-text li {
+  font-size: 1.3rem;
+}
 
-  .code {
-    background-color: black;
-    color: yellow;
-    border-radius: 8px;
-    padding: 20px;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
+.code {
+  width: inherit;
+  overflow: auto;
+  background-color: black;
+  color: yellow;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
 }
 
 /* Card */
@@ -745,6 +778,24 @@ footer {
   }
 }
 
+
+@media screen and (max-width: 930px) {
+  .quiz-group-container {
+    width: inherit;
+    flex-direction: column;
+  }
+
+  .quiz-container {
+    width: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cards {
+    flex-direction: column;
+  }
+}
+
 /* ----------------------------------------------------- */
 /* Chatbot */
 
@@ -915,16 +966,16 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  width: 100%;
   max-width: 800px;
   font-size: 1.5rem;
+  padding: 12px;
 }
 
 .post-page-container textarea,
 .post-page-container input {
   font-size: 1.5rem;
   border-radius: 8px;
-  padding: 8px;
+  padding: 20px;
 }
 
 .post-page-container button {
@@ -941,4 +992,17 @@ footer {
   cursor: pointer;
   background-color: rgba(141, 135, 135, 0.1);
   transition: all ease-in-out 0.3s;
+}
+
+.chatbot-container {
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.chatbot-container video {
+  width: inherit;
+  height: min-content;
+  overflow: auto;
 }

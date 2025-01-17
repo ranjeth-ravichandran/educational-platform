@@ -16,37 +16,40 @@ const Bubblesort_Information = () => {
 	return list`;
     return (
         <div className="bubblesort-information">
-            <h1>What is Bubble Sort?</h1>
-            <p>
-                Bubble sort is a simple sorting algorithm that repeatedly steps through
-                a list, comparing adjacent elements, and swapping them if they are in
-                the wrong order. Think of it like repeatedly bubbling the largest
-                element to the end of the list, hence the name.
-            </p>
-            <h1>How Does it Work?</h1>
-            <ol>
-                <li>
-                    <b>Iteration:</b> Bubble sort works through the list multiple times
-                    (iterations).
-                </li>
-                <li>
-                    <b>Comparison:</b> In each iteration, it compares adjacent elements
-                    (pairs).
-                </li>
-                <li>
-                    <b>Swapping:</b> If a pair is in the wrong order (i.e., the first
-                    element is bigger than the second), they are swapped.
-                </li>
-                <li>
-                    <b>Bubbling Up:</b> This swapping essentially &quot;bubbles&quot; the larger
-                    element towards the end of the list.
-                </li>
-                <li>
-                    <b>Optimisation:</b> With each iteration, the largest element is
-                    likely already in its final position, so the comparisons stop earlier
-                    in the list, improving efficiency.
-                </li>
-            </ol>
+            <div className="bubblesort-text">
+                <h1>What is Bubble Sort?</h1>
+                <p>
+                    Bubble sort is a simple sorting algorithm that repeatedly steps through
+                    a list, comparing adjacent elements, and swapping them if they are in
+                    the wrong order. Think of it like repeatedly bubbling the largest
+                    element to the end of the list, hence the name.
+                </p>
+                <h1>How Does it Work?</h1>
+                <ol>
+                    <li>
+                        <b>Iteration:</b> Bubble sort works through the list multiple times
+                        (iterations).
+                    </li>
+                    <li>
+                        <b>Comparison:</b> In each iteration, it compares adjacent elements
+                        (pairs).
+                    </li>
+                    <li>
+                        <b>Swapping:</b> If a pair is in the wrong order (i.e., the first
+                        element is bigger than the second), they are swapped.
+                    </li>
+                    <li>
+                        <b>Bubbling Up:</b> This swapping essentially &quot;bubbles&quot; the larger
+                        element towards the end of the list.
+                    </li>
+                    <li>
+                        <b>Optimisation:</b> With each iteration, the largest element is
+                        likely already in its final position, so the comparisons stop earlier
+                        in the list, improving efficiency.
+                    </li>
+                </ol>
+            </div>
+            
             <h1>Pseudocode</h1>
             <pre className="code">{pseudocode}</pre>
             <div className="cards">
